@@ -12,4 +12,9 @@ public abstract class Channel {
 
     private List<User> participants = new ArrayList<>();
 
+    public Channel(String name, Integer capacity) {
+        this.name = name;
+        this.capacity = capacity;
+    }
+
 }
