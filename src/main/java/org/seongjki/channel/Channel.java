@@ -1,9 +1,12 @@
 package org.seongjki.channel;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import org.seongjki.command.CommandArg;
+import java.util.Objects;
 import org.seongjki.command.JoinArgs;
+import org.seongjki.command.MessageArgs;
 import org.seongjki.user.User;
 
 public abstract class Channel {
@@ -13,6 +16,8 @@ public abstract class Channel {
     private Integer capacity;
 
     private List<User> participants = new ArrayList<>();
+
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
 
     public Channel(String name, Integer capacity) {
         this.name = name;
@@ -33,4 +38,17 @@ public abstract class Channel {
 
     public abstract boolean join(JoinArgs arg);
 
+    public boolean sendMsg(MessageArgs args) {
+        if (!isParticipate(args.getRequester())) {
+            return false;
+        }
+
+        System.out.printf("%s [%s]: %s\n", FORMATTER.format(LocalDateTime.now()),
+                args.getRequester().getNickname(), args.getMsg());
+        return true;
+    }
+
+    private boolean isParticipate(User user) {
+        return participants.stream().anyMatch(participant -> Objects.equals(user.getId(), participant.getId()));
+    }
 }
