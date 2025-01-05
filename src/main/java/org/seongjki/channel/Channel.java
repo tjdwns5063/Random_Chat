@@ -2,6 +2,8 @@ package org.seongjki.channel;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.seongjki.command.CommandArg;
+import org.seongjki.command.JoinArgs;
 import org.seongjki.user.User;
 
 public abstract class Channel {
@@ -16,5 +18,19 @@ public abstract class Channel {
         this.name = name;
         this.capacity = capacity;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public List<User> getParticipants() {
+        return participants;
+    }
+
+    public abstract boolean join(JoinArgs arg);
 
 }
