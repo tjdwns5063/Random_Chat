@@ -1,7 +1,8 @@
-package org.seongjki.command;
+package org.seongjki.command.join;
 
 import java.util.List;
 import org.seongjki.channel.Channel;
+import org.seongjki.command.CommandArg;
 import org.seongjki.user.User;
 
 public class JoinArgs implements CommandArg {

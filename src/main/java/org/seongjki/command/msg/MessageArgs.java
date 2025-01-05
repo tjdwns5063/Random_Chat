@@ -1,5 +1,6 @@
-package org.seongjki.command;
+package org.seongjki.command.msg;
 
+import org.seongjki.command.CommandArg;
 import org.seongjki.user.User;
 
 public class MessageArgs implements CommandArg {

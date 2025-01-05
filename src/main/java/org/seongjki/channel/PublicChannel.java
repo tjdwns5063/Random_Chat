@@ -1,6 +1,6 @@
 package org.seongjki.channel;
 
-import org.seongjki.command.JoinArgs;
+import org.seongjki.command.join.JoinArgs;
 
 public class PublicChannel extends Channel {
     public PublicChannel(String name, Integer capacity) {

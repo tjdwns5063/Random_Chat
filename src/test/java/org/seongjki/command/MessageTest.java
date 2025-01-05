@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.seongjki.channel.Channel;
 import org.seongjki.channel.PublicChannel;
+import org.seongjki.command.msg.Message;
+import org.seongjki.command.msg.MessageArgs;
 import org.seongjki.user.User;
 
 public class MessageTest {
