@@ -10,6 +10,12 @@ public class MessageArgs implements CommandArg {
 
     private User requester;
 
+    public MessageArgs(String channelName, String msg, User requester) {
+        this.channelName = channelName;
+        this.msg = msg;
+        this.requester = requester;
+    }
+
     public String getChannelName() {
         return channelName;
     }
@@ -21,4 +27,5 @@ public class MessageArgs implements CommandArg {
     public User getRequester() {
         return requester;
     }
+
 }
