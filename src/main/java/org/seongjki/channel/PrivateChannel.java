@@ -1,7 +1,7 @@
 package org.seongjki.channel;
 
 import org.apache.commons.lang3.StringUtils;
-import org.seongjki.command.JoinArgs;
+import org.seongjki.command.join.JoinArgs;
 
 public class PrivateChannel extends Channel {
 

@@ -1,10 +1,12 @@
-package org.seongjki.command;
+package org.seongjki.command.join;
 
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.seongjki.channel.Channel;
+import org.seongjki.command.Command;
+import org.seongjki.command.CommandArg;
 
-public class Join implements Command{
+public class Join implements Command {
 
     private final static String name = "JOIN";
 

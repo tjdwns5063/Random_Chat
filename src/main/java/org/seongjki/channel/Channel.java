@@ -5,8 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.seongjki.command.JoinArgs;
-import org.seongjki.command.MessageArgs;
+import org.seongjki.command.join.JoinArgs;
+import org.seongjki.command.msg.MessageArgs;
 import org.seongjki.user.User;
 
 public abstract class Channel {

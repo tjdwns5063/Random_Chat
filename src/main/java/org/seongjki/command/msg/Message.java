@@ -1,7 +1,9 @@
-package org.seongjki.command;
+package org.seongjki.command.msg;
 
 import org.apache.commons.lang3.StringUtils;
 import org.seongjki.channel.Channel;
+import org.seongjki.command.Command;
+import org.seongjki.command.CommandArg;
 import org.seongjki.user.User;
 
 public class Message implements Command {

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.seongjki.channel.Channel;
 import org.seongjki.channel.PrivateChannel;
 import org.seongjki.channel.PublicChannel;
+import org.seongjki.command.join.Join;
+import org.seongjki.command.join.JoinArgs;
 import org.seongjki.user.User;
 
 public class JoinTest {
