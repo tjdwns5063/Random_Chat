@@ -16,9 +16,9 @@ public class Message implements Command {
 
         Channel channel = requester.getChannels().stream().filter(ch -> StringUtils.equals(ch.getName(), args.getChannelName()))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("일치하는 채널이 존재하지 않습니다."));
+                .orElse(null);
 
-        return channel.sendMsg(args);
+        return channel != null && channel.sendMsg(args);
     }
 
     private void validateArgs(CommandArg argument) {

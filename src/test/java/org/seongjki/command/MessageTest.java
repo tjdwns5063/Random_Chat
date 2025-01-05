@@ -37,9 +37,11 @@ public class MessageTest {
         Command message = new Message();
         MessageArgs msgArgs = new MessageArgs("test2", "hello", user);
 
+        //when
+        boolean result = message.execute(msgArgs);
 
-        //when, then
-        Assertions.assertThrows(IllegalArgumentException.class, () -> message.execute(msgArgs));
+        //then
+        Assertions.assertFalse(result);
     }
 
     @Test
