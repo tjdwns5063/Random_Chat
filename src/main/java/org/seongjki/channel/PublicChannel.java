@@ -12,6 +12,7 @@ public class PublicChannel extends Channel {
         if (getParticipants().size() >= getCapacity()) {
             return false;
         }
+        arg.getRequester().getChannels().add(this);
         getParticipants().add(arg.getRequester());
         return true;
     }
