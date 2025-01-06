@@ -3,6 +3,7 @@ package org.seongjki.user;
 import java.util.ArrayList;
 import java.util.List;
 import org.seongjki.channel.Channel;
+import org.seongjki.command.usr.UsrArgs;
 
 public class User {
 
@@ -18,6 +19,12 @@ public class User {
 
     public User(Long id, String nickname, String password, String gender) {
         this.id = id;
+        this.nickname = nickname;
+        this.password = password;
+        this.gender = gender;
+    }
+
+    private User(String nickname, String password, String gender) {
         this.nickname = nickname;
         this.password = password;
         this.gender = gender;
@@ -42,4 +49,13 @@ public class User {
     public List<Channel> getChannels() {
         return channels;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public static User from(UsrArgs args) {
+        return new User(args.getNickname(), args.getPassword(), args.getGender());
+    }
+
 }
