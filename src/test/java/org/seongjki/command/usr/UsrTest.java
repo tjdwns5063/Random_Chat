@@ -1,19 +1,18 @@
 package org.seongjki.command.usr;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.seongjki.command.msg.MessageArgs;
-import org.seongjki.user.User;
 import org.seongjki.user.storage.MemoryUserRepository;
 import org.seongjki.user.storage.UserRepository;
 
 public class UsrTest {
 
-    static UserRepository repository;
+    private UserRepository repository;
 
-    @BeforeAll
-    static void beforeAll() {
+    @BeforeEach
+    void beforeEach() {
         repository = new MemoryUserRepository();
     }
 
@@ -34,7 +33,7 @@ public class UsrTest {
     void 유저_생성_실패_잘못된_인자() {
         //given
         Usr usr = new Usr(repository);
-        MessageArgs args = new MessageArgs("seongjki", "qwer", new User(1L, "test", "test", "test"));
+        MessageArgs args = new MessageArgs("c", 2L, "test2", "qwer");
 
         //when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> usr.execute(args));
