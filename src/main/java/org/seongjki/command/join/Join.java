@@ -6,14 +6,19 @@ import org.seongjki.channel.Channel;
 import org.seongjki.channel.storage.ChannelRepository;
 import org.seongjki.command.Command;
 import org.seongjki.command.CommandArg;
+import org.seongjki.user.User;
+import org.seongjki.user.storage.UserRepository;
 
 public class Join implements Command {
 
     private final static String name = "JOIN";
 
+    private final UserRepository userRepository;
+
     private final ChannelRepository channelRepository;
 
-    public Join(ChannelRepository channelRepository) {
+    public Join(UserRepository userRepository, ChannelRepository channelRepository) {
+        this.userRepository = userRepository;
         this.channelRepository = channelRepository;
     }
 
@@ -24,12 +29,12 @@ public class Join implements Command {
         JoinArgs args = (JoinArgs) argument;
 
         List<Channel> channels = channelRepository.findAll();
-
+        User user = userRepository.findById(args.getRequesterId()).orElseThrow(() -> new IllegalArgumentException("해당 유저가 존재하지 않습니다."));
         Channel channel = channels.stream().filter(ch -> StringUtils.equals(ch.getName(), args.getChannelName()))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("일치하는 채널이 존재하지 않습니다."));
 
-        return channel.join(args);
+        return channel.join(args, user);
     }
 
     private void validateArgs(CommandArg argument) {

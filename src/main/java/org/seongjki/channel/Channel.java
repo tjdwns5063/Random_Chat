@@ -46,7 +46,7 @@ public abstract class Channel {
         this.id = id;
     }
 
-    public abstract boolean join(JoinArgs arg);
+    public abstract boolean join(JoinArgs arg, User user);
 
     public void addUser(User user) {
         getParticipants().add(user);
