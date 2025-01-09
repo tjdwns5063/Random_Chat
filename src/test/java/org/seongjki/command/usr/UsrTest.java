@@ -1,11 +1,9 @@
-package org.seongjki.command;
+package org.seongjki.command.usr;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.seongjki.command.msg.MessageArgs;
-import org.seongjki.command.usr.Usr;
-import org.seongjki.command.usr.UsrArgs;
 import org.seongjki.user.User;
 import org.seongjki.user.storage.MemoryUserRepository;
 import org.seongjki.user.storage.UserRepository;
