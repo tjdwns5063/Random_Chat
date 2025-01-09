@@ -8,6 +8,15 @@ public class MemoryChannelRepository implements ChannelRepository {
     private List<Channel> channels = new ArrayList<>();
 
     @Override
+    public Channel save(Channel ch) {
+
+        ch.setId((long)channels.size());
+        channels.add(ch);
+
+        return ch;
+    }
+
+    @Override
     public List<Channel> findAll() {
         return Collections.unmodifiableList(channels);
     }

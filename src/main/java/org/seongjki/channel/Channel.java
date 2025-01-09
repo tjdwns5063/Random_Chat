@@ -42,6 +42,10 @@ public abstract class Channel {
         return participants;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public abstract boolean join(JoinArgs arg);
 
     public boolean sendMsg(MessageArgs args) {

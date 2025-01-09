@@ -6,6 +6,8 @@ import org.seongjki.channel.Channel;
 
 public interface ChannelRepository {
 
+    Channel save(Channel ch);
+
     List<Channel> findAll();
 
     Optional<Channel> findById(Long id);
