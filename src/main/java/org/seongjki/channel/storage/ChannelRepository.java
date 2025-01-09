@@ -14,4 +14,6 @@ public interface ChannelRepository {
 
     Optional<Channel> findByName(String name);
 
+    boolean isPresentByName(String name);
+
 }

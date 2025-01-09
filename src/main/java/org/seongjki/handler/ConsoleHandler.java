@@ -3,6 +3,8 @@ package org.seongjki.handler;
 import org.seongjki.channel.storage.ChannelRepository;
 import org.seongjki.command.Command;
 import org.seongjki.command.CommandParser;
+import org.seongjki.command.channel.Ch;
+import org.seongjki.command.channel.ChCommandParser;
 import org.seongjki.command.join.Join;
 import org.seongjki.command.join.JoinCommandParser;
 import org.seongjki.command.leave.Leave;
@@ -42,6 +44,7 @@ public class ConsoleHandler implements Handler {
             case Leave.name -> new Leave(userRepository);
             case Message.name -> new Message(userRepository);
             case Usr.name -> new Usr(userRepository);
+            case Ch.name -> new Ch(userRepository, channelRepository);
             default -> throw new IllegalArgumentException("해당 커맨드가 존재하지 않습니다.");
         };
     }
@@ -54,6 +57,7 @@ public class ConsoleHandler implements Handler {
             case Leave.name -> new LeaveCommandParser();
             case Message.name -> new MessageCommandParser();
             case Usr.name -> new UsrCommandParser();
+            case Ch.name -> new ChCommandParser();
             default -> throw new IllegalArgumentException("해당 커맨드가 존재하지 않습니다.");
         };
     }
