@@ -7,23 +7,16 @@ import org.seongjki.user.User;
 
 public class JoinArgs implements CommandArg {
 
-    private List<Channel> channels;
-
     private User requester;
 
     private String channelName;
 
     private String password;
 
-    public JoinArgs(List<Channel> channels, User requester, String channelName, String password) {
-        this.channels = channels;
+    public JoinArgs(User requester, String channelName, String password) {
         this.requester = requester;
         this.channelName = channelName;
         this.password = password;
-    }
-
-    public List<Channel> getChannels() {
-        return channels;
     }
 
     public User getRequester() {

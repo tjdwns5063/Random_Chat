@@ -48,6 +48,11 @@ public abstract class Channel {
 
     public abstract boolean join(JoinArgs arg);
 
+    public void addUser(User user) {
+        getParticipants().add(user);
+        user.getChannels().add(this);
+    }
+
     public boolean sendMsg(MessageArgs args) {
         if (!isParticipate(args.getRequester())) {
             return false;
