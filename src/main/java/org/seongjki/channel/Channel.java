@@ -11,6 +11,8 @@ import org.seongjki.user.User;
 
 public abstract class Channel {
 
+    private Long id;
+
     private String name;
 
     private Integer capacity;
@@ -22,6 +24,10 @@ public abstract class Channel {
     public Channel(String name, Integer capacity) {
         this.name = name;
         this.capacity = capacity;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
