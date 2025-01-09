@@ -11,7 +11,7 @@ import org.seongjki.user.storage.UserRepository;
 
 public class Join implements Command {
 
-    private final static String name = "JOIN";
+    public final static String name = "JOIN";
 
     private final UserRepository userRepository;
 

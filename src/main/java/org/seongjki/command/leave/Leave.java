@@ -8,6 +8,8 @@ import org.seongjki.user.storage.UserRepository;
 
 public class Leave implements Command {
 
+    public static final String name = "LEAVE";
+
     private final UserRepository userRepository;
 
     public Leave(UserRepository userRepository) {
