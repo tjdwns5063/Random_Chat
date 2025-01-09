@@ -20,8 +20,7 @@ public class PrivateChannel extends Channel {
         if (!StringUtils.equals(password, arg.getPassword())) {
             return false;
         }
-        arg.getRequester().getChannels().add(this);
-        getParticipants().add(arg.getRequester());
+        addUser(arg.getRequester());
         return true;
     }
 }
