@@ -2,6 +2,7 @@ package org.seongjki.command.usr;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.seongjki.command.CommandArg;
 import org.seongjki.user.storage.MemoryUserRepository;
@@ -12,8 +13,8 @@ public class UsrParserTest {
     static UserRepository userRepository;
     static Usr usr;
 
-    @BeforeAll
-    static void beforeAll() {
+    @BeforeEach
+    void beforeEach() {
         userRepository = new MemoryUserRepository();
         usr = new Usr(userRepository);
     }
