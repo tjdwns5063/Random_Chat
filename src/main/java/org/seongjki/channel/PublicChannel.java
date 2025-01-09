@@ -1,6 +1,7 @@
 package org.seongjki.channel;
 
 import org.seongjki.command.join.JoinArgs;
+import org.seongjki.user.User;
 
 public class PublicChannel extends Channel {
     public PublicChannel(String name, Integer capacity) {
@@ -8,11 +9,11 @@ public class PublicChannel extends Channel {
     }
 
     @Override
-    public boolean join(JoinArgs arg) {
+    public boolean join(JoinArgs arg, User user) {
         if (getParticipants().size() >= getCapacity()) {
             return false;
         }
-        addUser(arg.getRequester());
+        addUser(user);
         return true;
     }
 }

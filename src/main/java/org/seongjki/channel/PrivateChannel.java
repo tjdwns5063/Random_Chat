@@ -2,6 +2,7 @@ package org.seongjki.channel;
 
 import org.apache.commons.lang3.StringUtils;
 import org.seongjki.command.join.JoinArgs;
+import org.seongjki.user.User;
 
 public class PrivateChannel extends Channel {
 
@@ -13,14 +14,14 @@ public class PrivateChannel extends Channel {
     }
 
     @Override
-    public boolean join(JoinArgs arg) {
+    public boolean join(JoinArgs arg, User user) {
         if (getParticipants().size() >= getCapacity()) {
             return false;
         }
         if (!StringUtils.equals(password, arg.getPassword())) {
             return false;
         }
-        addUser(arg.getRequester());
+        addUser(user);
         return true;
     }
 }

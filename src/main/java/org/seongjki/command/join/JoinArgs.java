@@ -1,26 +1,24 @@
 package org.seongjki.command.join;
 
-import java.util.List;
-import org.seongjki.channel.Channel;
 import org.seongjki.command.CommandArg;
 import org.seongjki.user.User;
 
 public class JoinArgs implements CommandArg {
 
-    private User requester;
+    private Long requesterId;
 
     private String channelName;
 
     private String password;
 
-    public JoinArgs(User requester, String channelName, String password) {
-        this.requester = requester;
+    public JoinArgs(Long requesterId, String channelName, String password) {
+        this.requesterId = requesterId;
         this.channelName = channelName;
         this.password = password;
     }
 
-    public User getRequester() {
-        return requester;
+    public Long getRequesterId() {
+        return requesterId;
     }
 
     public String getChannelName() {
