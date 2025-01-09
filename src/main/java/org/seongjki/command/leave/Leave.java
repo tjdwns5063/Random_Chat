@@ -3,23 +3,32 @@ package org.seongjki.command.leave;
 import org.apache.commons.lang3.StringUtils;
 import org.seongjki.command.Command;
 import org.seongjki.command.CommandArg;
+import org.seongjki.user.User;
+import org.seongjki.user.storage.UserRepository;
 
 public class Leave implements Command {
+
+    private final UserRepository userRepository;
+
+    public Leave(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public boolean execute(CommandArg argument) {
         validateArgs(argument);
 
         LeaveArgs args = (LeaveArgs) argument;
+        User user = userRepository.findById(args.getRequesterId()).orElseThrow();
 
-        if (args.getRequester().getChannels().stream().noneMatch(ch -> StringUtils.equals(ch.getName(), args.getChannelName()))) {
+        if (user.getChannels().stream().noneMatch(ch -> StringUtils.equals(ch.getName(), args.getChannelName()))) {
             return false;
         }
 
-        args.getRequester().getChannels().stream().filter(ch -> StringUtils.equals(ch.getName(), args.getChannelName())).findFirst()
+        user.getChannels().stream().filter(ch -> StringUtils.equals(ch.getName(), args.getChannelName())).findFirst()
                 .ifPresent(ch -> {
-                    ch.getParticipants().remove(args.getRequester());
-                    args.getRequester().getChannels().remove(ch);
+                    ch.getParticipants().remove(user);
+                    user.getChannels().remove(ch);
                 });
 
         return true;

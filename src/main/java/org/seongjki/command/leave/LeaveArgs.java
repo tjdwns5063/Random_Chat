@@ -7,10 +7,10 @@ public class LeaveArgs implements CommandArg {
 
     private String channelName;
 
-    private User requester;
+    private Long requesterId;
 
-    public LeaveArgs(User requester, String channelName) {
-        this.requester = requester;
+    public LeaveArgs(Long requesterId, String channelName) {
+        this.requesterId = requesterId;
         this.channelName = channelName;
     }
 
@@ -18,7 +18,7 @@ public class LeaveArgs implements CommandArg {
         return channelName;
     }
 
-    public User getRequester() {
-        return requester;
+    public Long getRequesterId() {
+        return requesterId;
     }
 }
