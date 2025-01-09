@@ -7,6 +7,8 @@ import org.seongjki.user.storage.UserRepository;
 
 public class Usr implements Command {
 
+    public static final String name = "USR";
+
     private final UserRepository userRepository;
 
     public Usr(UserRepository userRepository) {

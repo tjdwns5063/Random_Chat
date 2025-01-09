@@ -9,6 +9,8 @@ import org.seongjki.user.storage.UserRepository;
 
 public class Message implements Command {
 
+    public static final String name = "MSG";
+
     private final UserRepository userRepository;
 
     public Message(UserRepository userRepository) {
