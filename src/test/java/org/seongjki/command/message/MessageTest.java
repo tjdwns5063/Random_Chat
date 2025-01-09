@@ -1,30 +1,38 @@
-package org.seongjki.command;
+package org.seongjki.command.message;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.seongjki.channel.Channel;
 import org.seongjki.channel.PublicChannel;
 import org.seongjki.command.msg.Message;
 import org.seongjki.command.msg.MessageArgs;
 import org.seongjki.user.User;
+import org.seongjki.user.storage.MemoryUserRepository;
+import org.seongjki.user.storage.UserRepository;
 
 public class MessageTest {
 
-    static User user = new User(1L, "seongjki", "1234", "male");
-    static Channel channel = new PublicChannel("test", 4);
+    private Message message;
+    private UserRepository userRepository;
+    private User user;
+    private Channel channel;
 
-    @BeforeAll
-    public static void init() {
+    @BeforeEach
+    public void init() {
+        userRepository = new MemoryUserRepository();
+        message = new Message(userRepository);
+        user = new User(1L, "seongjki", "1234", "male");
+        channel = new PublicChannel("test", 4);
         channel.getParticipants().add(user);
         user.getChannels().add(channel);
+        userRepository.save(user);
     }
 
     @Test
     void 메세지_전송_성공() {
         //given
-        Command message = new Message();
-        MessageArgs msgArgs = new MessageArgs("test", "hello", user);
+        MessageArgs msgArgs = new MessageArgs("c", user.getId(), "test", "hello");
 
         //when
         boolean result = message.execute(msgArgs);
@@ -36,8 +44,7 @@ public class MessageTest {
     @Test
     void 메세지_전송_채널_존재X_실패() {
         //given
-        Command message = new Message();
-        MessageArgs msgArgs = new MessageArgs("test2", "hello", user);
+        MessageArgs msgArgs = new MessageArgs("c", user.getId(),"test2", "hello");
 
         //when
         boolean result = message.execute(msgArgs);
@@ -49,8 +56,7 @@ public class MessageTest {
     @Test
     void 메시지_전송_채널에_유저_X_실패() {
         //given
-        Command message = new Message();
-        MessageArgs msgArgs = new MessageArgs("test", "hello", user);
+        MessageArgs msgArgs = new MessageArgs("c", user.getId(), "test", "hello");
         channel.getParticipants().clear();
 
         //when
