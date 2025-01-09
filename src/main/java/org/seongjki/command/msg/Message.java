@@ -5,8 +5,15 @@ import org.seongjki.channel.Channel;
 import org.seongjki.command.Command;
 import org.seongjki.command.CommandArg;
 import org.seongjki.user.User;
+import org.seongjki.user.storage.UserRepository;
 
 public class Message implements Command {
+
+    private final UserRepository userRepository;
+
+    public Message(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public boolean execute(CommandArg argument) {
@@ -14,9 +21,9 @@ public class Message implements Command {
 
         MessageArgs args = (MessageArgs) argument;
 
-        User requester = args.getRequester();
+        User user = userRepository.findById(args.getRequesterId()).orElseThrow();
 
-        Channel channel = requester.getChannels().stream().filter(ch -> StringUtils.equals(ch.getName(), args.getChannelName()))
+        Channel channel = user.getChannels().stream().filter(ch -> StringUtils.equals(ch.getName(), args.getChannelName()))
                 .findFirst()
                 .orElse(null);
 

@@ -54,16 +54,19 @@ public abstract class Channel {
     }
 
     public boolean sendMsg(MessageArgs args) {
-        if (!isParticipate(args.getRequester())) {
+        if (!isParticipate(args.getRequesterId())) {
             return false;
         }
 
+        User user = participants.stream().filter(participant -> Objects.equals(args.getRequesterId(), participant.getId()))
+                        .findFirst().orElseThrow();
+
         System.out.printf("%s [%s]: %s\n", FORMATTER.format(LocalDateTime.now()),
-                args.getRequester().getNickname(), args.getMsg());
+                user.getNickname(), args.getMsg());
         return true;
     }
 
-    private boolean isParticipate(User user) {
-        return participants.stream().anyMatch(participant -> Objects.equals(user.getId(), participant.getId()));
+    private boolean isParticipate(Long userId) {
+        return participants.stream().anyMatch(participant -> Objects.equals(userId, participant.getId()));
     }
 }
